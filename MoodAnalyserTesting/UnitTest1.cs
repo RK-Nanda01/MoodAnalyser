@@ -39,16 +39,37 @@ public class UnitTest1
     }
 
     [TestMethod]
-    [DataRow("", "happy")]
-    public void GivenNullMoodReturnHAPPY(string input, string expected)
+    [DataRow("")]
+    public void Given_Empty_Mood_Return_MoodAnalysisException_Indicating_EMPTY_MOOD(string input)
     {
-        //Arrange
-        MoodAnalysis obj = new MoodAnalysis(input);
+        try
+        {
+            //Arrange
+            MoodAnalysis obj = new MoodAnalysis(input);
 
-        //Act
-        string result = obj.AnalyseMood();
+            //Act
+            string result = obj.AnalyseMood();
+        }
+        catch(MoodAnalysisException e)
+        {
+            Assert.AreEqual("Mood Should Not be Empty", e.Message);
+        }
+    }
+    [TestMethod]
+    [DataRow(null)]
+    public void Given_Null_Mood_Return_MoodAnalysisException_Indicating_NULL_MOOD(string input)
+    {
+        try
+        {
+            //Arrange
+            MoodAnalysis obj = new MoodAnalysis(input);
 
-        //Assert
-        Assert.AreEqual(result, expected);
+            //Act
+            string result = obj.AnalyseMood();
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.AreEqual("Mood Should Not be NULL", e.Message);
+        }
     }
 }

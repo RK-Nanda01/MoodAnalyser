@@ -17,8 +17,13 @@ namespace MoodAnalyser
 		public string AnalyseMood()
 		{
 			string messageLowerCase = this.message.ToLower();
+
 			try
 			{
+				if(this.message.Equals(string.Empty))
+				{
+					throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MOOD, "Mood Should Not be Empty");
+				}
                 if (messageLowerCase.Contains("sad"))
                 {
                     return "sad";
@@ -28,12 +33,11 @@ namespace MoodAnalyser
                     return "happy";
                 }
             }
-            catch
+            catch(NullReferenceException) 
             {
-                return "happy";
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MOOD, "Mood Should Not be NULL");
             }
-			
-		}
+        }
 	}
 }
 
