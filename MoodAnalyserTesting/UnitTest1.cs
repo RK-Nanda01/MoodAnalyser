@@ -37,4 +37,18 @@ public class UnitTest1
         //Assert
         Assert.AreEqual(result, expected);
     }
+
+    [TestMethod]
+    [DataRow("", "happy")]
+    public void GivenNullMoodReturnHAPPY(string input, string expected)
+    {
+        //Arrange
+        MoodAnalysis obj = new MoodAnalysis(input);
+
+        //Act
+        string result = obj.AnalyseMood();
+
+        //Assert
+        Assert.AreEqual(result, expected);
+    }
 }

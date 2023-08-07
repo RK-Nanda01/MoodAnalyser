@@ -4,7 +4,12 @@ namespace MoodAnalyser
 	public class MoodAnalysis
 	{
 		private string message;
-		public MoodAnalysis(string msg)
+
+        public MoodAnalysis()
+        {
+            this.message = "";
+        }
+        public MoodAnalysis(string msg)
 		{
 			this.message = msg;
 		}
@@ -12,14 +17,22 @@ namespace MoodAnalyser
 		public string AnalyseMood()
 		{
 			string messageLowerCase = this.message.ToLower();
-			if(messageLowerCase.Contains("sad"))
+			try
 			{
-				return "sad";
-			}
-			else
-			{
-				return "happy";
-			}
+                if (messageLowerCase.Contains("sad"))
+                {
+                    return "sad";
+                }
+                else
+                {
+                    return "happy";
+                }
+            }
+            catch
+            {
+                return "happy";
+            }
+			
 		}
 	}
 }
