@@ -72,4 +72,15 @@ public class UnitTest1
             Assert.AreEqual("Mood Should Not be NULL", e.Message);
         }
     }
+
+    [TestMethod]
+    
+    public void Given_Proper_Class_Details_Return_MoodAnalyserObject()
+    {
+        
+        MoodAnalysis expectedObj = new MoodAnalysis();
+        object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalysis", "MoodAnalysis");
+        expectedObj.Equals(resultObject);
+
+    }
 }
