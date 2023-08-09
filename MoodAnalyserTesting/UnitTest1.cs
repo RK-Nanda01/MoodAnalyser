@@ -74,13 +74,57 @@ public class UnitTest1
     }
 
     [TestMethod]
-    
     public void Given_Proper_Class_Details_Return_MoodAnalyserObject()
     {
         
         MoodAnalysis expectedObj = new MoodAnalysis();
         object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalysis", "MoodAnsalysis");
         expectedObj.Equals(resultObject);
+
+    }
+
+    [TestMethod]
+    public void Given_Proper_Class_Details_Return_MoodAnalyserObjectWith_ParameterizedConstructor()
+    {
+
+
+        MoodAnalysis expectedObj = new MoodAnalysis("happy");
+        object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParameterisedConstr("MoodAnalyser.MoodAnalysis", "MoodAnalysis", "happy");
+        expectedObj.Equals(resultObject);
+
+    }
+    [TestMethod]
+    public void Given_ImProper_Class_Details_Return_No_Such_ClassError()
+    {
+
+        try
+        {
+            MoodAnalysis expectedObj = new MoodAnalysis("happy");
+            object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParameterisedConstr("MoodAnalyser.MoodAnalysis", "MoodAnalysis", "happy");
+            expectedObj.Equals(resultObject);
+
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.AreEqual("Class Not Found", e.Message);
+        }
+
+    }
+    [TestMethod]
+    public void Given_ImProper_Constructor_Return_No_Such_MethodError()
+    {
+
+        try
+        {
+            MoodAnalysis expectedObj = new MoodAnalysis("happy");
+            object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParameterisedConstr("MoodAnalyser.MoodAnalysis", "MoodAnalyvsis", "happy");
+            expectedObj.Equals(resultObject);
+
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.AreEqual("Constructor Not found", e.Message);
+        }
 
     }
 }

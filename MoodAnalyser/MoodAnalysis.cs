@@ -37,6 +37,7 @@ namespace MoodAnalyser
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MOOD, "Mood Should Not be NULL");
             }
+           
         }
 	}
 }
