@@ -79,7 +79,7 @@ public class UnitTest1
     {
         
         MoodAnalysis expectedObj = new MoodAnalysis();
-        object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalysis", "MoodAnalysis");
+        object resultObject = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser.MoodAnalysis", "MoodAnsalysis");
         expectedObj.Equals(resultObject);
 
     }
